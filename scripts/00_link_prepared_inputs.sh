@@ -11,7 +11,7 @@ done
 # Replication
 for dir in data/processed/replication/*; do
     name=$(basename "$dir")
-    ln -sfn "../../$dir" "results/$name"
+    ln -sfn "../$dir" "results/$name"
 done
 
 # MVMR
