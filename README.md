@@ -239,19 +239,6 @@ Instrument strength is assessed using conditional F-statistics. Additional analy
 
 Interpretation of the MVMR results should take account of conditional instrument strength.
 
-## Reproducibility and verification
-
-The following checks have been completed during repository preparation:
-
-- Primary MR estimates were reproduced from the original GWAS summary statistics, including instrument selection, LD clumping, association extraction, and harmonisation.
-- Replication analyses were independently reproduced from the source GWAS datasets; the IVW coefficients, standard errors, and P-values matched the original results.
-- MVMR statistical analyses were reproduced using the included harmonised datasets.
-- The included analysis-ready input files were verified to be accessible after cloning the repository.
-
-
-
-The repository therefore distinguishes between reproducing statistical analyses from the included prepared datasets and reproducing the complete preprocessing workflow from original GWAS summary statistics.
-
 ## Data availability
 
 Large GWAS summary-statistics datasets and LD reference panels are not redistributed in this repository.
