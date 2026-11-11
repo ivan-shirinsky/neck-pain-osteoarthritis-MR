@@ -215,7 +215,7 @@ Rscript R/08_MVMR_from_GWAS.R
 
 The supplied GWAS directory must contain the files in the formats expected by the script.
 
-**Verification status:** The full MVMR implementation has been recovered from the original analysis workflow. Cross-validation of this repository version against the original Org/Babel implementation is pending.
+**Verification status:** The full MVMR implementation has been recovered from the original analysis workflow. 
 
 ## Effect scales and statistical interpretation
 
@@ -248,7 +248,7 @@ The following checks have been completed during repository preparation:
 - MVMR statistical analyses were reproduced using the included harmonised datasets.
 - The included analysis-ready input files were verified to be accessible after cloning the repository.
 
-Further cross-validation against the original Org/Babel analysis code is planned before the final public release.
+
 
 The repository therefore distinguishes between reproducing statistical analyses from the included prepared datasets and reproducing the complete preprocessing workflow from original GWAS summary statistics.
 
@@ -264,6 +264,6 @@ The original GWAS datasets should be obtained from their respective sources in a
 
 ## Repository status
 
-This repository is being prepared for a versioned public release.
 
-The analytical code and prepared datasets are available for reproducibility purposes. Final verification against the original analysis notebooks remains in progress.
+
+The analytical code and prepared datasets are available for reproducibility purposes. 
