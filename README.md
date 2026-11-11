@@ -1,124 +1,264 @@
 # Neck pain and osteoarthritis: Mendelian randomization analyses
 
-Code and analysis-ready data for a study of the bidirectional
-relationships between neck pain and osteoarthritis of the knee,
-hand and hip.
+This repository contains the R and Bash code and analysis-ready datasets used to investigate the bidirectional relationships between neck pain and osteoarthritis (OA) of the knee, hand, and hip using Mendelian randomization (MR).
 
-## Contents
+The analyses include:
 
-- `R/` — R scripts for MR, sensitivity analyses and MVMR.
-- `scripts/` — scripts for preparing inputs from GWAS summary statistics.
-- `data/processed/primary/` — analysis-ready primary MR data.
-- `data/processed/replication/` — replication datasets.
-- `data/processed/mvmr/` — harmonised MVMR data and reference results.
-- `reference/` — GWAS study characteristics.
-- `provenance/` — mapping of analytical code to original notebooks.
+- Primary bidirectional two-sample MR.
+- Replication analyses using alternative GWAS datasets of neck or shoulder pain.
+- Multivariable MR (MVMR) adjusting for genetically predicted body mass index (BMI).
+- Sensitivity analyses and instrument-strength diagnostics.
 
-Large GWAS summary statistics and LD reference panels are not
-distributed in this repository.
+The repository is intended to support transparency and reproducibility of the statistical analyses.
 
-## Reproducibility status
+## Repository structure
 
-### Primary bidirectional MR
+```text
+neck-pain-osteoarthritis-MR/
+├── R/
+│   ├── 00_check_inputs.R
+│   ├── 02_primary_MR.R
+│   ├── 02b_primary_effects_for_figures.R
+│   ├── 03_primary_diagnostics.R
+│   ├── 04_replication_from_harmonised.R
+│   ├── 04a_replication_harmonise.R
+│   ├── 05a_MVMR_Qhet.R
+│   ├── 05b_MVMR_Qhet_jackknife.R
+│   ├── 06_MVMR_tables_from_results.R
+│   ├── 07_MR_PRESSO_Lasso.R
+│   └── 08_MVMR_from_GWAS.R
+├── scripts/
+│   ├── 00_link_prepared_inputs.sh
+│   ├── 01_select_instruments.sh
+│   ├── 02_extract_outcomes.sh
+│   ├── 03_replication_clumping.sh
+│   └── 04_replication_extract.sh
+├── data/
+│   ├── README.md
+│   └── processed/
+│       ├── primary/
+│       ├── replication/
+│       └── mvmr/
+├── reference/
+├── results/
+├── .gitignore
+└── README.md
+```
 
-The primary analysis was reproduced from the original GWAS
-summary statistics, including instrument selection, LD clumping,
-outcome extraction, harmonisation and MR estimation.
+### `scripts/` — GWAS preprocessing
 
-### Replication analyses
+This directory contains Bash scripts for preprocessing large GWAS summary-statistics datasets.
 
-Replication analyses using the GWAS reported by Meng et al.
-and Tao et al., with GO1 non-UK Biobank OA outcomes, were
-reproduced from source GWAS data.
+**Primary MR**
 
-All 12 IVW estimates (beta, SE and P-value) matched the
-previously obtained results.
+- `01_select_instruments.sh`: selects genome-wide significant genetic instruments and performs LD clumping.
+- `02_extract_outcomes.sh`: extracts the corresponding SNP associations from outcome GWAS datasets.
 
-### Multivariable MR
+**Replication MR**
 
-The MVMR analyses were reproduced using the included
-harmonised input datasets.
+- `03_replication_clumping.sh`: selects instruments from alternative neck or shoulder pain GWAS datasets (Meng et al. and Tao et al.).
+- `04_replication_extract.sh`: extracts the corresponding exposure and outcome associations, including OA associations from GWAS datasets excluding UK Biobank participants.
 
-These analyses include BMI adjustment, conditional instrument
-strength, heterogeneity statistics and jackknife diagnostics.
+**Input preparation**
 
-The repository does not currently provide a validated
-end-to-end MVMR preprocessing workflow starting from raw GWAS.
+- `00_link_prepared_inputs.sh`: creates symbolic links to the included analysis-ready datasets.
+
+Full GWAS preprocessing requires the original summary-statistics files, PLINK 1.9, and an appropriate European ancestry LD reference panel.
+
+### `R/` — Statistical analyses
+
+The R scripts implement the statistical analyses and diagnostics.
+
+| Script | Purpose |
+|---|---|
+| `02_primary_MR.R` | Primary bidirectional MR |
+| `02b_primary_effects_for_figures.R` | Effect estimates for main figures |
+| `03_primary_diagnostics.R` | Primary MR sensitivity diagnostics |
+| `04a_replication_harmonise.R` | Harmonisation of replication datasets |
+| `04_replication_from_harmonised.R` | Replication and exploratory MR analyses |
+| `05a_MVMR_Qhet.R` | Weak-instrument-robust MVMR heterogeneity analysis |
+| `05b_MVMR_Qhet_jackknife.R` | Jackknife confidence intervals for MVMR |
+| `06_MVMR_tables_from_results.R` | MVMR results tables |
+| `07_MR_PRESSO_Lasso.R` | Additional MR sensitivity analyses |
+| `08_MVMR_from_GWAS.R` | Full MVMR analysis starting from GWAS summary statistics |
+
+The full MVMR script includes GWAS preprocessing, instrument selection, harmonisation, MVMR estimation, and diagnostic analyses.
+
+Unlike the Bash preprocessing scripts for primary and replication MR, this implementation uses R for processing large GWAS files and PLINK for LD clumping.
+
+The full MVMR workflow requires substantially more computational resources than analyses using the included harmonised datasets.
+
+## GWAS data sources
+
+The primary analyses use the following GWAS datasets:
+
+| Phenotype | GWAS accession |
+|---|---|
+| Neck pain | GCST90480571 |
+| Knee OA | GCST90566800 |
+| Hand OA | GCST90566797 |
+| Hip OA | GCST90566798 |
+
+The MVMR analyses additionally use BMI associations from the GIANT consortium GWAS reported by Locke et al. (2015), available through the OpenGWAS dataset `ieu-a-835`.
+
+Replication analyses use alternative GWAS datasets of neck or shoulder pain reported by Meng et al. (2020) and Tao et al. (2025), together with GO Consortium OA GWAS datasets excluding UK Biobank participants.
+
+Further information is provided in `data/README.md` and `reference/S1_GWAS_study_characteristics.csv`.
 
 ## Requirements
 
-R and the packages required by the individual analysis scripts.
+The analyses were developed and tested in an R environment on Linux.
 
-The primary and replication workflows also use the
-TwoSampleMR package.
+The main R dependencies include:
 
-Full GWAS preprocessing requires PLINK 1.9 and a suitable
-European LD reference panel.
+- TwoSampleMR
+- ieugwasr
+- MVMR
+- MendelianRandomization
+- data.table
+- dplyr
+- readr
+- tibble
+- purrr
+- tidyr
 
-## Running analyses from prepared data
+Additional packages are required for some sensitivity analyses.
 
-Clone or download this repository and open a terminal in
-its root directory.
+PLINK 1.9 and a European LD reference panel are required for GWAS preprocessing.
 
-First create links to the included analysis-ready datasets:
+Package requirements and computational settings are documented in the individual scripts.
 
-    bash scripts/00_link_prepared_inputs.sh
+## Reproducing analyses from prepared data
 
-Then check the available inputs:
+The repository includes compact, analysis-ready datasets, allowing statistical analyses to be reproduced without downloading the complete GWAS summary statistics.
 
-    Rscript R/00_check_inputs.R "$(pwd)"
+Clone the repository:
 
-Primary MR:
+```bash
+git clone https://github.com/ivan-shirinsky/neck-pain-osteoarthritis-MR.git
+cd neck-pain-osteoarthritis-MR
+```
 
-    Rscript R/02_primary_MR.R "$(pwd)"
-    Rscript R/02b_primary_effects_for_figures.R "$(pwd)"
-    Rscript R/03_primary_diagnostics.R "$(pwd)"
+Prepare input paths:
 
-Replication:
+```bash
+bash scripts/00_link_prepared_inputs.sh
+```
 
-    Rscript R/04_replication_from_harmonised.R "$(pwd)"
+Check the available datasets and R packages:
 
-MVMR:
+```bash
+Rscript R/00_check_inputs.R "$(pwd)"
+```
 
-    Rscript R/05a_MVMR_Qhet.R "$(pwd)"
-    Rscript R/05b_MVMR_Qhet_jackknife.R "$(pwd)"
-    Rscript R/06_MVMR_tables_from_results.R "$(pwd)"
+### Primary MR
 
-Additional sensitivity analyses:
+```bash
+Rscript R/02_primary_MR.R "$(pwd)"
+Rscript R/02b_primary_effects_for_figures.R "$(pwd)"
+Rscript R/03_primary_diagnostics.R "$(pwd)"
+```
 
-    Rscript R/07_MR_PRESSO_Lasso.R "$(pwd)"
+### Replication MR
 
-Individual scripts may require additional R packages.
-See their headers and console output.
+```bash
+Rscript R/04_replication_from_harmonised.R "$(pwd)"
+```
 
-## Effect scales
+### Multivariable MR
 
-Primary MR: odds ratios are expressed per doubling of
-genetically predicted odds of the exposure.
+```bash
+Rscript R/05a_MVMR_Qhet.R "$(pwd)"
+Rscript R/05b_MVMR_Qhet_jackknife.R "$(pwd)"
+Rscript R/06_MVMR_tables_from_results.R "$(pwd)"
+```
 
-Replication: odds ratios are expressed per 10-percentage-point
-increase in genetically predicted probability of neck or
-shoulder pain.
+### Additional sensitivity analyses
 
-The primary MR uses a Bonferroni significance threshold
-of 0.05 / 6.
+```bash
+Rscript R/07_MR_PRESSO_Lasso.R "$(pwd)"
+```
 
-## Data sources
+Generated outputs are written to the `results/` directory, which is excluded from version control.
 
-The original GWAS summary statistics are not redistributed.
+## Full MVMR workflow from GWAS summary statistics
 
-See `data/README.md` and
-`reference/S1_GWAS_study_characteristics.csv` for
-information on the source datasets.
+The full MVMR implementation is provided in:
 
-## Reproducibility scope
+```text
+R/08_MVMR_from_GWAS.R
+```
 
-The included analysis-ready datasets permit reproduction of
-statistical analyses without downloading the full GWAS files.
+This script requires five GWAS summary-statistics datasets:
 
-The original GWAS preprocessing steps were also checked
-locally for the primary MR and replication analyses.
+- Neck pain
+- Knee OA
+- Hand OA
+- Hip OA
+- BMI
 
-The MVMR preprocessing stage is documented separately and
-is not claimed to be independently reproduced from raw GWAS
-by this public workflow.
+The script uses environment variables to specify the location of the GWAS files, output directory, PLINK executable, and European LD reference panel.
+
+For example:
+
+```bash
+MVMR_DATA_DIR="/path/to/gwas" \
+MVMR_RESULTS_DIR="results/mvmr_from_raw" \
+EUR_BFILE="/path/to/EUR_reference" \
+Rscript R/08_MVMR_from_GWAS.R
+```
+
+The supplied GWAS directory must contain the files in the formats expected by the script.
+
+**Verification status:** The full MVMR implementation has been recovered from the original analysis workflow. Cross-validation of this repository version against the original Org/Babel implementation is pending.
+
+## Effect scales and statistical interpretation
+
+**Primary MR**
+
+Effect estimates are expressed as odds ratios per doubling of genetically predicted odds of the exposure.
+
+The primary analyses use a Bonferroni-corrected significance threshold of 0.05/6.
+
+**Replication MR**
+
+The alternative neck or shoulder pain GWAS datasets provide effect estimates on the linear probability scale.
+
+Replication MR odds ratios are therefore expressed per 10-percentage-point increase in genetically predicted probability of neck or shoulder pain.
+
+**Multivariable MR**
+
+MVMR estimates account for genetically predicted BMI.
+
+Instrument strength is assessed using conditional F-statistics. Additional analyses include heterogeneity and weak-instrument-robust diagnostics.
+
+Interpretation of the MVMR results should take account of conditional instrument strength.
+
+## Reproducibility and verification
+
+The following checks have been completed during repository preparation:
+
+- Primary MR estimates were reproduced from the original GWAS summary statistics, including instrument selection, LD clumping, association extraction, and harmonisation.
+- Replication analyses were independently reproduced from the source GWAS datasets; the IVW coefficients, standard errors, and P-values matched the original results.
+- MVMR statistical analyses were reproduced using the included harmonised datasets.
+- The included analysis-ready input files were verified to be accessible after cloning the repository.
+
+Further cross-validation against the original Org/Babel analysis code is planned before the final public release.
+
+The repository therefore distinguishes between reproducing statistical analyses from the included prepared datasets and reproducing the complete preprocessing workflow from original GWAS summary statistics.
+
+## Data availability
+
+Large GWAS summary-statistics datasets and LD reference panels are not redistributed in this repository.
+
+The included compact datasets contain GWAS-derived summary associations and harmonised analysis inputs.
+
+No individual-level participant data are included.
+
+The original GWAS datasets should be obtained from their respective sources in accordance with applicable access and usage conditions.
+
+## Repository status
+
+This repository is being prepared for a versioned public release.
+
+The analytical code and prepared datasets are available for reproducibility purposes. Final verification against the original analysis notebooks remains in progress.
