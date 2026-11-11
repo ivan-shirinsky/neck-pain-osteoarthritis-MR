@@ -1,0 +1,32 @@
+# Raw large summary statistics, derived inputs and logs
+data/raw/
+results/**
+!results/.gitkeep
+*.gz
+*.bgz
+*.rds
+*.RData
+*.Rhistory
+*.log
+*.bak
+.Rproj.user/
+.DS_Store
+
+# Include compact harmonised inputs required for reproduction
+!data/processed/
+!data/processed/**/*.rds
+
+# Experimental and superseded scripts
+R/08_MVMR_from_raw_GWAS.R
+scripts/05_select_BMI_instruments.sh
+scripts/06_extract_MVMR_associations.sh
+
+# Local research notebooks (retained locally)
+original_notebooks/
+
+# Temporary checks
+input_check.csv
+OUTPUT_CHECKLIST.md
+
+# Superseded historical script
+scripts/01_exposure_clumping_ORIGINAL_REVIEW.sh

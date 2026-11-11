@@ -1,0 +1,4 @@
+"id.exposure","id.outcome","outcome","exposure","method","nsnp","b","se","pval"
+"2TXVYv","9Uy1C6","outcome","exposure","Inverse variance weighted (multiplicative random effects)",3,2.88266948713706,1.57872364908091,0.0678578852767049
+"2TXVYv","9Uy1C6","outcome","exposure","Weighted median",3,2.614978120189,1.3431146040372,0.0515406274373769
+"2TXVYv","9Uy1C6","outcome","exposure","MR Egger",3,14.5700627295381,5.56675314954216,0.232336126413866

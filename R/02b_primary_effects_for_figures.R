@@ -1,0 +1,18 @@
+# Derived numerical values for main effect figure, from the computed MR models.
+args<-commandArgs(trailingOnly=TRUE)
+project<-if(length(args)) normalizePath(args[[1]],mustWork=TRUE) else getwd()
+setwd(project)
+path<-file.path('results','mr_results_all_pairs.csv')
+if(!file.exists(path)) stop('Run 02_primary_MR.R first: ',path)
+d<-read.csv(path,check.names=FALSE)
+required<-c('exposure','outcome','method','b','se','pval','nsnp')
+if(!all(required %in% names(d))) stop('Missing columns: ',paste(setdiff(required,names(d)),collapse=', '))
+d$OR_per_doubling<-exp(d$b*log(2))
+d$CI_lower_per_doubling<-exp((d$b-1.96*d$se)*log(2))
+d$CI_upper_per_doubling<-exp((d$b+1.96*d$se)*log(2))
+output<-file.path('results','tables','primary_methods_OR_per_doubling.csv')
+dir.create(dirname(output),recursive=TRUE,showWarnings=FALSE)
+write.csv(d,output,row.names=FALSE)
+cat('\n=== PRIMARY MR EFFECTS (all methods; figure-ready) ===\n')
+print(d[,c('exposure','outcome','method','nsnp','OR_per_doubling',
+              'CI_lower_per_doubling','CI_upper_per_doubling','pval')],row.names=FALSE)

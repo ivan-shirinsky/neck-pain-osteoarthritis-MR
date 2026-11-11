@@ -1,0 +1,19 @@
+Variable,Neck pain (GCST90480571),Knee OA (GCST90566800),Hand OA (GCST90566797),Hip OA (GCST90566798)
+N_total,"579,152","1,316,500","890,465","1,152,707"
+N_cases / N_controls (% cases),"123,311 / 455,841 (21.3%)","172,256 / 1,144,244 (13.1%)","40,904 / 849,561 (4.6%)","97,328 / 1,055,379 (8.4%)"
+African ancestry,"108,180 (18.7%)","24,911 (1.9%)","15,078 (1.7%)","22,751 (2.0%)"
+Hispanic / Latin ancestry,"53,954 (9.3%)","3,426 (0.3%)","3,713 (0.4%)","3,774 (0.3%)"
+East Asian ancestry,"6,280 (1.1%)","132,202 (10.0%)",484 (0.1%),"2,684 (0.2%)"
+European ancestry,"410,738 (70.9%)","1,127,213 (85.6%)","853,901 (95.9%)","1,107,086 (96.0%)"
+South Asian ancestry,0 (0.0%),"19,864 (1.5%)","8,839 (1.0%)","7,997 (0.7%)"
+Other ancestry,0 (0.0%),"8,884 (0.7%)","8,450 (0.9%)","8,415 (0.7%)"
+Ethnicity (overall),"Multi-ancestry: Eur., Afr.-Am., Hisp., East Asian","Multi-ancestry: Eur., East Asian, Afr./Af-Am., South Asian, Hisp., Admixed","Multi-ancestry: Eur., East Asian, Afr./Af-Am., South Asian, Hisp., Admixed","Multi-ancestry: Eur., East Asian, Afr./Af-Am., South Asian, Hisp., Admixed"
+Countries (ISO-2),US,"AU, CN, DK, EE, FI, DE, GR, IS, JP, NL, NO, SE, UK, US","AU, CN, DK, EE, FI, DE, GR, IS, JP, NL, NO, SE, UK, US","AU, CN, DK, EE, FI, DE, GR, IS, JP, NL, NO, SE, UK, US"
+GWAS type,Primary GWAS (multi-ancestry),Meta-analysis (multi-ancestry),Meta-analysis (multi-ancestry),Meta-analysis (multi-ancestry)
+Phenotype definition,VA EHR cervicalgia phecode (curated ICD-9/10 grouping),"Osteoarthritis of the knee (ascertained using a combination of self-report, hospital diagnosis, and radiographic criteria)","Osteoarthritis of the hand (ascertained using a combination of self-report, hospital diagnosis, and radiographic criteria)","Osteoarthritis of the hip (ascertained using a combination of self-report, hospital diagnosis, and radiographic criteria)"
+Unit,logOR,logOR,logOR,logOR
+Platform,Genome-wide array,"Affymetrix, Illumina","Affymetrix, Illumina","Affymetrix, Illumina"
+Imputed SNPs,"44,300,000","24,344,537","19,591,543","20,097,305"
+Access site (NHGRI-EBI),GCST90480571.tsv.gz,GCST90566800.tsv.gz,GCST90566797.tsv.gz,GCST90566798.tsv.gz
+Access date,2025-08-13,2025-08-13,2025-08-13,2025-08-13
+Reference,Science 2024; PMID: 39024449 (Verma et al.),Nature 2025; PMID: 40205036 (Hatzikotoulas et al.),Nature 2025; PMID: 40205036 (Hatzikotoulas et al.),Nature 2025; PMID: 40205036 (Hatzikotoulas et al.)
