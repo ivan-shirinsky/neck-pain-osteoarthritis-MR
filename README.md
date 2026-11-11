@@ -51,6 +51,10 @@ This directory contains Bash scripts for preprocessing large GWAS summary-statis
 
 Preprocessing for multivariable MR (MVMR) is implemented separately in `R/08_MVMR_from_GWAS.R`.
 
+**Input preparation**
+
+- `00_link_prepared_inputs.sh`: creates symbolic links to the included analysis-ready datasets.
+
 **Primary MR**
 
 - `01_primary_select_instruments.sh`: selects genome-wide significant genetic instruments and performs LD clumping.
@@ -60,10 +64,6 @@ Preprocessing for multivariable MR (MVMR) is implemented separately in `R/08_MVM
 
 - `03_replication_select_instruments.sh`: selects instruments from alternative neck or shoulder pain GWAS datasets (Meng et al. and Tao et al.).
 - `04_replication_extract_associations.sh`: extracts the corresponding exposure and outcome associations, including OA associations from GWAS datasets excluding UK Biobank participants.
-
-**Input preparation**
-
-- `00_link_prepared_inputs.sh`: creates symbolic links to the included analysis-ready datasets.
 
 Full GWAS preprocessing requires the original summary-statistics files, PLINK 1.9, and an appropriate European ancestry LD reference panel.
 
