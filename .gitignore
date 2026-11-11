@@ -30,3 +30,4 @@ OUTPUT_CHECKLIST.md
 
 # Superseded historical script
 scripts/01_exposure_clumping_ORIGINAL_REVIEW.sh
+provenance/org_block_manifest.csv
