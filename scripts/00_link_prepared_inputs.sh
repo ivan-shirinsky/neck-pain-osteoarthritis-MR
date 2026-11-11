@@ -15,10 +15,10 @@ for dir in data/processed/replication/*; do
 done
 
 # MVMR
-mkdir -p results/mvmr_denis_ubuntu_validation
+mkdir -p results/mvmr
 for file in data/processed/mvmr/*; do
     ln -sfn "../../$file" \
-        "results/mvmr_denis_ubuntu_validation/$(basename "$file")"
+        "results/mvmr/$(basename "$file")"
 done
 
 echo "Prepared input links created."

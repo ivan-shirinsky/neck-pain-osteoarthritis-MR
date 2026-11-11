@@ -2,7 +2,7 @@
 # Extracted/adapted from user's Org-mode research notebooks.
 # STATUS: REVIEW REQUIRED. Not independently executed in this environment.
 # MVMR.org lines 2221-2305
-# Requires results/mvmr_denis_ubuntu_validation inputs (.rds); computes leave-one-variant-out jackknife.
+# Requires results/mvmr inputs (.rds); computes leave-one-variant-out jackknife.
 
 
 args <- commandArgs(trailingOnly = TRUE)

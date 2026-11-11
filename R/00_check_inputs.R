@@ -13,8 +13,8 @@ replication <- unlist(Map(function(dir,ext) file.path('results', dir, paste0(c('
 replication <- c(replication, 'results/Tao_25SNP_GO1/exposure.tsv')
 dirs <- c('neck_plus_BMI_to_knee','neck_plus_BMI_to_hand','neck_plus_BMI_to_hip',
           'knee_plus_BMI_to_neck','hip_plus_BMI_to_neck','hand_plus_BMI_to_neck')
-mvmr <- c(file.path('results/mvmr_denis_ubuntu_validation',paste0('mvmr_harmonised_',dirs,'.rds')),
-          'results/mvmr_denis_ubuntu_validation/mvmr_results.csv')
+mvmr <- c(file.path('results/mvmr',paste0('mvmr_harmonised_',dirs,'.rds')),
+          'results/mvmr/mvmr_results.csv')
 expected <- data.frame(stage=c(rep('primary',length(primary)),rep('replication',length(replication)),rep('MVMR',length(mvmr))),
                        file=c(primary,replication,mvmr), stringsAsFactors=FALSE)
 expected$present <- file.exists(file.path(project,expected$file))
