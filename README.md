@@ -60,7 +60,11 @@ European LD reference panel.
 Clone or download this repository and open a terminal in
 its root directory.
 
-First check the available inputs:
+First create links to the included analysis-ready datasets:
+
+    bash scripts/00_link_prepared_inputs.sh
+
+Then check the available inputs:
 
     Rscript R/00_check_inputs.R "$(pwd)"
 
