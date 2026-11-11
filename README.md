@@ -47,7 +47,9 @@ neck-pain-osteoarthritis-MR/
 
 ### `scripts/` — GWAS preprocessing
 
-This directory contains Bash scripts for preprocessing large GWAS summary-statistics datasets.
+This directory contains Bash scripts for preprocessing large GWAS summary-statistics datasets used in the **primary bidirectional MR and replication analyses**.
+
+Preprocessing for multivariable MR (MVMR) is implemented separately in `R/08_MVMR_from_GWAS.R`.
 
 **Primary MR**
 
