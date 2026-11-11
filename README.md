@@ -73,16 +73,19 @@ The R scripts implement the statistical analyses and diagnostics.
 
 | Script | Purpose |
 |---|---|
+| **Primary MR** | |
 | `02_primary_MR.R` | Primary bidirectional MR |
 | `02b_primary_effects_for_figures.R` | Effect estimates for main figures |
 | `03_primary_diagnostics.R` | Primary MR sensitivity diagnostics |
+| `07_MR_PRESSO_Lasso.R` | Additional sensitivity analyses |
+| **Replication MR** | |
 | `04a_replication_harmonise.R` | Harmonisation of replication datasets |
 | `04_replication_from_harmonised.R` | Replication and exploratory MR analyses |
+| **Multivariable MR** | |
+| `08_MVMR_from_GWAS.R` | Main MVMR pipeline: GWAS preprocessing, instrument selection, harmonisation and estimation |
 | `05a_MVMR_Qhet.R` | Weak-instrument-robust MVMR heterogeneity analysis |
-| `05b_MVMR_Qhet_jackknife.R` | Jackknife confidence intervals for MVMR |
+| `05b_MVMR_Qhet_jackknife.R` | Jackknife confidence intervals |
 | `06_MVMR_tables_from_results.R` | MVMR results tables |
-| `07_MR_PRESSO_Lasso.R` | Additional MR sensitivity analyses |
-| `08_MVMR_from_GWAS.R` | Full MVMR analysis starting from GWAS summary statistics |
 
 The full MVMR script includes GWAS preprocessing, instrument selection, harmonisation, MVMR estimation, and diagnostic analyses.
 
