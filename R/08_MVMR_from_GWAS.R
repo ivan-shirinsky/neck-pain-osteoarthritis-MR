@@ -37,7 +37,7 @@
 #
 #  REQUIRED ENVIRONMENT
 #  --------------------
-#    R            >= 4.2      (developed on R 4.5.3, Windows 11 x64)
+#    R            >= 4.2      
 #    data.table   >= 1.14
 #    readr        >= 2.0
 #    dplyr        >= 1.0
