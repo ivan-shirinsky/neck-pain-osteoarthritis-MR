@@ -29,10 +29,10 @@ neck-pain-osteoarthritis-MR/
 │   └── 08_MVMR_from_GWAS.R
 ├── scripts/
 │   ├── 00_link_prepared_inputs.sh
-│   ├── 01_select_instruments.sh
-│   ├── 02_extract_outcomes.sh
-│   ├── 03_replication_clumping.sh
-│   └── 04_replication_extract.sh
+│   ├── 01_primary_select_instruments.sh
+│   ├── 02_primary_extract_associations.sh
+│   ├── 03_replication_select_instruments.sh
+│   └── 04_replication_extract_associations.sh
 ├── data/
 │   ├── README.md
 │   └── processed/
@@ -51,13 +51,13 @@ This directory contains Bash scripts for preprocessing large GWAS summary-statis
 
 **Primary MR**
 
-- `01_select_instruments.sh`: selects genome-wide significant genetic instruments and performs LD clumping.
-- `02_extract_outcomes.sh`: extracts the corresponding SNP associations from outcome GWAS datasets.
+- `01_primary_select_instruments.sh`: selects genome-wide significant genetic instruments and performs LD clumping.
+- `02_primary_extract_associations.sh`: extracts the corresponding SNP associations from outcome GWAS datasets.
 
 **Replication MR**
 
-- `03_replication_clumping.sh`: selects instruments from alternative neck or shoulder pain GWAS datasets (Meng et al. and Tao et al.).
-- `04_replication_extract.sh`: extracts the corresponding exposure and outcome associations, including OA associations from GWAS datasets excluding UK Biobank participants.
+- `03_replication_select_instruments.sh`: selects instruments from alternative neck or shoulder pain GWAS datasets (Meng et al. and Tao et al.).
+- `04_replication_extract_associations.sh`: extracts the corresponding exposure and outcome associations, including OA associations from GWAS datasets excluding UK Biobank participants.
 
 **Input preparation**
 
