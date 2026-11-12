@@ -1,6 +1,5 @@
 # 04_replication_from_harmonised.R
 # Extracted/adapted from user's Org-mode research notebooks.
-# STATUS: REVIEW REQUIRED. Not independently executed in this environment.
 # replication.org final tables block, approx. lines 3514-3771
 # Requires 12 harmonised phenotype datasets plus Tao exploratory exposure.tsv.
 # Calculates replication results and saves machine-readable CSV, no Word.

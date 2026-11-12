@@ -1,6 +1,5 @@
 # 06_MVMR_tables_from_results.R
 # Extracted/adapted from user's Org-mode research notebooks.
-# STATUS: REVIEW REQUIRED. Not independently executed in this environment.
 # MVMR.org lines 2364-2853
 # Converts numerically calculated IVW and Q-het results to machine-readable CSV.
 # DOES NOT recalculate the IVW or Q-het fit; run prerequisite analyses first.

@@ -1,6 +1,5 @@
 # 02_primary_MR.R
 # Extracted/adapted from user's Org-mode research notebooks.
-# STATUS: REVIEW REQUIRED. Not independently executed in this environment.
 # primary_MR.org lines 358-439
 # Requires derived data in results/: <trait>_exposure.tsv and <outcome>_outcome_by_<exposure>.tsv
 # TwoSampleMR::mr() runs all configured methods; compare selected IVW-MRE results with manuscript.

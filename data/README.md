@@ -1,16 +1,76 @@
-# Input data (not included)
+# Input data
 
-Raw full GWAS summary statistics are not redistributed in this repository.
+This repository includes compact, analysis-ready datasets
+for primary MR, replication MR, and multivariable MR (MVMR).
 
-Primary MR requires exposure and outcome tables in `results/`, created from source GWAS with PLINK clumping using 1000 Genomes EUR panel (r² < 0.001, 10 Mb, P < 5e-8). The historical preparation shell fragment is in `scripts/01_exposure_clumping_ORIGINAL_REVIEW.sh` but needs manual refactoring.
+Full GWAS summary statistics are not redistributed.
 
-Replication expects:
-- `results/sensitivity_noUKB/{KneeOA,HandOA,HipOA}_harmonised.csv`
-- `results/sensitivity_Meng2020_5e-7/{KneeOA,HandOA,HipOA}_harmonised.csv`
-- `results/sensitivity_Tao2025/{KneeOA,HandOA,HipOA}_harmonised.csv`
-- `results/Tao_25SNP_GO1/{KneeOA,HandOA,HipOA}_harmonised.tsv`
-- `results/Tao_25SNP_GO1/exposure.tsv`
+## Primary MR
 
-MVMR expects previously generated `results/mvmr_denis_ubuntu_validation` inputs (`mvmr_results.csv`, harmonised `.rds` files) and summary inputs created by the external Denis validation script, which was referenced in the notebooks but NOT attached. The full MVMR pipeline cannot yet be rerun without that script.
+Prepared exposure and outcome association datasets are
+available in `data/processed/primary/`.
 
-Study datasets: primary neck pain MVP GCST90480571; OA GO2 knee GCST90566800, hand GCST90566797, hip GCST90566798; BMI GIANT Locke 2015, IEU OpenGWAS `ieu-a-835`. Replication neck/shoulder pain Meng 2020 (Figshare 7699583), Tao 2025 (Figshare 31362121), GO1 OA outcomes excluding UK Biobank from Musculoskeletal Knowledge Portal (2024-09-16 snapshot). See manuscript for complete references, license and usage restrictions.
+The original GWAS preprocessing workflow is implemented in:
+
+- `scripts/01_primary_select_instruments.sh`
+- `scripts/02_primary_extract_associations.sh`
+
+Instrument selection uses genome-wide significance
+(P < 5e-8) and LD clumping (r² < 0.001, 10 Mb)
+with the 1000 Genomes European reference panel.
+
+## Replication MR
+
+Prepared replication datasets are available in
+`data/processed/replication/`.
+
+The preprocessing scripts are:
+
+- `scripts/03_replication_select_instruments.sh`
+- `scripts/04_replication_extract_associations.sh`
+
+The analyses use alternative neck or shoulder pain GWAS
+from Meng et al. (2020) and Tao et al. (2025), with
+OA outcome datasets excluding UK Biobank participants.
+
+## Multivariable MR
+
+Prepared harmonised MVMR datasets and results are available
+in `data/processed/mvmr/`.
+
+The full MVMR pipeline is implemented in:
+
+`R/08_MVMR_from_GWAS.R`
+
+It includes GWAS preprocessing, instrument selection,
+LD clumping, harmonisation, MVMR estimation and diagnostics.
+
+Full preprocessing requires the original GWAS summary
+statistics, PLINK and the European LD reference panel.
+
+## Data sources
+
+Primary GWAS:
+- Neck pain: GCST90480571
+- Knee OA: GCST90566800
+- Hand OA: GCST90566797
+- Hip OA: GCST90566798
+
+BMI:
+- GIANT consortium, Locke et al. (2015)
+- IEU OpenGWAS: ieu-a-835
+
+Replication:
+- Meng et al. (2020)
+- Tao et al. (2025)
+- GO Consortium non-UK Biobank OA datasets
+
+## Usage
+
+From the repository root:
+
+    bash scripts/00_link_prepared_inputs.sh
+
+See the main README for instructions on running the analyses.
+
+No individual-level participant data are included.
