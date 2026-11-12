@@ -111,16 +111,17 @@ The analyses were developed and tested in an R environment on Linux.
 
 The main R dependencies include:
 
-- TwoSampleMR
-- ieugwasr
-- MVMR
-- MendelianRandomization
-- data.table
-- dplyr
-- readr
-- tibble
-- purrr
-- tidyr
+- [TwoSampleMR](https://mrcieu.github.io/TwoSampleMR/)
+- [ieugwasr](https://mrcieu.github.io/ieugwasr/)
+- [MVMR](https://wspiller.github.io/MVMR/)
+- [MRPRESSO](https://github.com/rondolab/MR-PRESSO)
+- [MendelianRandomization](https://cran.r-project.org/package=MendelianRandomization)
+- [data.table](https://cran.r-project.org/package=data.table)
+- [dplyr](https://cran.r-project.org/package=dplyr)
+- [readr](https://cran.r-project.org/package=readr)
+- [tibble](https://cran.r-project.org/package=tibble)
+- [purrr](https://cran.r-project.org/package=purrr)
+- [tidyr](https://cran.r-project.org/package=tidyr)
 
 Additional packages are required for some sensitivity analyses.
 
