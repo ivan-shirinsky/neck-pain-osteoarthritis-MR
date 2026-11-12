@@ -11,7 +11,14 @@ done
 # Replication
 for dir in data/processed/replication/*; do
     name=$(basename "$dir")
-    ln -sfn "../$dir" "results/$name"
+    target="results/$name"
+
+    # Preserve existing real directories with analysis results.
+    if [[ -d "$target" && ! -L "$target" ]]; then
+        continue
+    fi
+
+    ln -sfn "../$dir" "$target"
 done
 
 # MVMR
