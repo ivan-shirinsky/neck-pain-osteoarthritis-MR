@@ -28,7 +28,6 @@ neck-pain-osteoarthritis-MR/
 │   ├── primary_PRESSO_Lasso.R
 │   └── MVMR_from_GWAS.R
 ├── scripts/
-│   ├── 00_link_prepared_inputs.sh
 │   ├── 01_primary_select_instruments.sh
 │   ├── 02_primary_extract_associations.sh
 │   ├── 03_replication_select_instruments.sh
@@ -50,10 +49,6 @@ neck-pain-osteoarthritis-MR/
 This directory contains Bash scripts for preprocessing large GWAS summary-statistics datasets used in the **primary bidirectional MR and replication analyses**.
 
 Preprocessing for multivariable MR (MVMR) is implemented separately in `R/MVMR_from_GWAS.R`.
-
-**Input preparation**
-
-- `00_link_prepared_inputs.sh`: creates symbolic links to the included analysis-ready datasets.
 
 **Primary MR**
 
@@ -142,12 +137,6 @@ Clone the repository:
 ```bash
 git clone https://github.com/ivan-shirinsky/neck-pain-osteoarthritis-MR.git
 cd neck-pain-osteoarthritis-MR
-```
-
-Prepare input paths:
-
-```bash
-bash scripts/00_link_prepared_inputs.sh
 ```
 
 Check the available datasets and R packages:

@@ -65,12 +65,6 @@ Replication:
 - Tao et al. (2025)
 - GO Consortium non-UK Biobank OA datasets
 
-## Usage
-
-From the repository root:
-
-    bash scripts/00_link_prepared_inputs.sh
-
 See the main README for instructions on running the analyses.
 
 No individual-level participant data are included.
