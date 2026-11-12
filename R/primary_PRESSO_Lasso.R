@@ -1,5 +1,5 @@
 # Reproduce MR-PRESSO and MR-Lasso from harmonised primary MR data.
-# Run from project root: Rscript R/07_MR_PRESSO_Lasso.R
+# Run from project root: Rscript R/primary_PRESSO_Lasso.R
 required <- c("MRPRESSO", "MendelianRandomization")
 missing <- required[!vapply(required, requireNamespace, logical(1), quietly = TRUE)]
 if (length(missing)) stop("Missing R packages: ", paste(missing, collapse = ", "))

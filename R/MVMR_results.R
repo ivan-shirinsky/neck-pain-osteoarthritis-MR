@@ -1,4 +1,4 @@
-# 06_MVMR_tables_from_results.R
+# MVMR_results.R
 # Extracted/adapted from user's Org-mode research notebooks.
 # MVMR.org lines 2364-2853
 # Converts numerically calculated IVW and Q-het results to machine-readable CSV.

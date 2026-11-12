@@ -1,4 +1,4 @@
-# 02_primary_MR.R
+# primary_MR.R
 # Extracted/adapted from user's Org-mode research notebooks.
 # primary_MR.org lines 358-439
 # Requires derived data in results/: <trait>_exposure.tsv and <outcome>_outcome_by_<exposure>.tsv

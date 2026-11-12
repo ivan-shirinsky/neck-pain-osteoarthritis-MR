@@ -1,5 +1,5 @@
-# 03_primary_diagnostics.R: machine-readable outputs supporting manuscript figures
-# Requires harmonised RDS saved by 02_primary_MR.R. Reruns diagnostic calculations.
+# primary_diagnostics.R: machine-readable outputs supporting manuscript figures
+# Requires harmonised RDS saved by primary_MR.R. Reruns diagnostic calculations.
 args <- commandArgs(trailingOnly = TRUE)
 project <- if (length(args)) normalizePath(args[[1]], mustWork = TRUE) else getwd()
 setwd(project)

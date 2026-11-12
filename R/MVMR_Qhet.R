@@ -1,4 +1,4 @@
-# 05a_MVMR_Qhet.R
+# MVMR_Qhet.R
 # Extracted/adapted from user's Org-mode research notebooks.
 # MVMR.org lines 1906-2033
 # Requires results/mvmr inputs (.rds); calculates Q-min estimates.

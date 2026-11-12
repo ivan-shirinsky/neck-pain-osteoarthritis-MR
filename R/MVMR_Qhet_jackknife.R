@@ -1,4 +1,4 @@
-# 05b_MVMR_Qhet_jackknife.R
+# MVMR_Qhet_jackknife.R
 # Extracted/adapted from user's Org-mode research notebooks.
 # MVMR.org lines 2221-2305
 # Requires results/mvmr inputs (.rds); computes leave-one-variant-out jackknife.

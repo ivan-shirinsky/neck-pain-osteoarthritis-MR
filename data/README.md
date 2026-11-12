@@ -40,7 +40,7 @@ in `data/processed/mvmr/`.
 
 The full MVMR pipeline is implemented in:
 
-`R/08_MVMR_from_GWAS.R`
+`R/MVMR_from_GWAS.R`
 
 It includes GWAS preprocessing, instrument selection,
 LD clumping, harmonisation, MVMR estimation and diagnostics.

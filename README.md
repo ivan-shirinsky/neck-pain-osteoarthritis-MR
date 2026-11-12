@@ -16,17 +16,17 @@ The repository is intended to support transparency and reproducibility of the st
 ```text
 neck-pain-osteoarthritis-MR/
 ├── R/
-│   ├── 00_check_inputs.R
-│   ├── 02_primary_MR.R
-│   ├── 02b_primary_effects_for_figures.R
-│   ├── 03_primary_diagnostics.R
-│   ├── 04_replication_from_harmonised.R
-│   ├── 04a_replication_harmonise.R
-│   ├── 05a_MVMR_Qhet.R
-│   ├── 05b_MVMR_Qhet_jackknife.R
-│   ├── 06_MVMR_tables_from_results.R
-│   ├── 07_MR_PRESSO_Lasso.R
-│   └── 08_MVMR_from_GWAS.R
+│   ├── check_inputs.R
+│   ├── primary_MR.R
+│   ├── primary_effects_for_figures.R
+│   ├── primary_diagnostics.R
+│   ├── replication_MR.R
+│   ├── replication_harmonise.R
+│   ├── MVMR_Qhet.R
+│   ├── MVMR_Qhet_jackknife.R
+│   ├── MVMR_results.R
+│   ├── primary_PRESSO_Lasso.R
+│   └── MVMR_from_GWAS.R
 ├── scripts/
 │   ├── 00_link_prepared_inputs.sh
 │   ├── 01_primary_select_instruments.sh
@@ -49,7 +49,7 @@ neck-pain-osteoarthritis-MR/
 
 This directory contains Bash scripts for preprocessing large GWAS summary-statistics datasets used in the **primary bidirectional MR and replication analyses**.
 
-Preprocessing for multivariable MR (MVMR) is implemented separately in `R/08_MVMR_from_GWAS.R`.
+Preprocessing for multivariable MR (MVMR) is implemented separately in `R/MVMR_from_GWAS.R`.
 
 **Input preparation**
 
@@ -74,18 +74,18 @@ The R scripts implement the statistical analyses and diagnostics.
 | Script | Purpose |
 |---|---|
 | **Primary MR** | |
-| `02_primary_MR.R` | Primary bidirectional MR |
-| `02b_primary_effects_for_figures.R` | Effect estimates for main figures |
-| `03_primary_diagnostics.R` | Primary MR sensitivity diagnostics |
-| `07_MR_PRESSO_Lasso.R` | Additional sensitivity analyses |
+| `primary_MR.R` | Primary bidirectional MR |
+| `primary_effects_for_figures.R` | Effect estimates for main figures |
+| `primary_diagnostics.R` | Primary MR sensitivity diagnostics |
+| `primary_PRESSO_Lasso.R` | Additional sensitivity analyses |
 | **Replication MR** | |
-| `04a_replication_harmonise.R` | Harmonisation of replication datasets |
-| `04_replication_from_harmonised.R` | Replication and exploratory MR analyses |
+| `replication_harmonise.R` | Harmonisation of replication datasets |
+| `replication_MR.R` | Replication and exploratory MR analyses |
 | **Multivariable MR** | |
-| `08_MVMR_from_GWAS.R` | Main MVMR pipeline: GWAS preprocessing, instrument selection, harmonisation and estimation |
-| `05a_MVMR_Qhet.R` | Weak-instrument-robust MVMR heterogeneity analysis |
-| `05b_MVMR_Qhet_jackknife.R` | Jackknife confidence intervals |
-| `06_MVMR_tables_from_results.R` | MVMR results tables |
+| `MVMR_from_GWAS.R` | Main MVMR pipeline: GWAS preprocessing, instrument selection, harmonisation and estimation |
+| `MVMR_Qhet.R` | Weak-instrument-robust MVMR heterogeneity analysis |
+| `MVMR_Qhet_jackknife.R` | Jackknife confidence intervals |
+| `MVMR_results.R` | MVMR results tables |
 
 The full MVMR script includes GWAS preprocessing, instrument selection, harmonisation, MVMR estimation, and diagnostic analyses.
 
@@ -153,35 +153,35 @@ bash scripts/00_link_prepared_inputs.sh
 Check the available datasets and R packages:
 
 ```bash
-Rscript R/00_check_inputs.R "$(pwd)"
+Rscript R/check_inputs.R "$(pwd)"
 ```
 
 ### Primary MR
 
 ```bash
-Rscript R/02_primary_MR.R "$(pwd)"
-Rscript R/02b_primary_effects_for_figures.R "$(pwd)"
-Rscript R/03_primary_diagnostics.R "$(pwd)"
+Rscript R/primary_MR.R "$(pwd)"
+Rscript R/primary_effects_for_figures.R "$(pwd)"
+Rscript R/primary_diagnostics.R "$(pwd)"
 ```
 
 ### Replication MR
 
 ```bash
-Rscript R/04_replication_from_harmonised.R "$(pwd)"
+Rscript R/replication_MR.R "$(pwd)"
 ```
 
 ### Multivariable MR
 
 ```bash
-Rscript R/05a_MVMR_Qhet.R "$(pwd)"
-Rscript R/05b_MVMR_Qhet_jackknife.R "$(pwd)"
-Rscript R/06_MVMR_tables_from_results.R "$(pwd)"
+Rscript R/MVMR_Qhet.R "$(pwd)"
+Rscript R/MVMR_Qhet_jackknife.R "$(pwd)"
+Rscript R/MVMR_results.R "$(pwd)"
 ```
 
 ### Additional sensitivity analyses
 
 ```bash
-Rscript R/07_MR_PRESSO_Lasso.R "$(pwd)"
+Rscript R/primary_PRESSO_Lasso.R "$(pwd)"
 ```
 
 Generated outputs are written to the `results/` directory, which is excluded from version control.
@@ -191,7 +191,7 @@ Generated outputs are written to the `results/` directory, which is excluded fro
 The full MVMR implementation is provided in:
 
 ```text
-R/08_MVMR_from_GWAS.R
+R/MVMR_from_GWAS.R
 ```
 
 This script requires five GWAS summary-statistics datasets:
@@ -210,7 +210,7 @@ For example:
 MVMR_DATA_DIR="/path/to/gwas" \
 MVMR_RESULTS_DIR="results/mvmr_from_raw" \
 EUR_BFILE="/path/to/EUR_reference" \
-Rscript R/08_MVMR_from_GWAS.R
+Rscript R/MVMR_from_GWAS.R
 ```
 
 The supplied GWAS directory must contain the files in the formats expected by the script.
