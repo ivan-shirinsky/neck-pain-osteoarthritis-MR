@@ -31,4 +31,3 @@ print(data.frame(package=packages,installed=vapply(packages,requireNamespace,log
 outfile <- file.path(project,'input_check.csv')
 write.csv(expected,outfile,row.names=FALSE)
 cat('\nReport: ',outfile,'\n',sep='')
-cat('Note: successful input check is NOT evidence of numerical reproducibility.\n')
