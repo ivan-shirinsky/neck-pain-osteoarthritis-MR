@@ -204,7 +204,6 @@ Rscript R/MVMR_from_GWAS.R
 
 The supplied GWAS directory must contain the files in the formats expected by the script.
 
-**Verification status:** The full MVMR implementation has been recovered from the original analysis workflow. 
 
 ## Effect scales and statistical interpretation
 
